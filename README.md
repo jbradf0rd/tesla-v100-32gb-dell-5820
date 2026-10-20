@@ -74,7 +74,7 @@ Every step except the last runs with the card removed, because the machine canno
    38c000000000-38ffffffffff : PCI Bus 0000:b2
    ```
 
-6. **Install the card and wait.** Power off, fit the V100, power on, and leave the machine alone. It power-cycles about five times on every cold boot with the card present, as was also observed with the P40 on BIOS 2.41, then boots; Ubuntu was reachable within roughly two minutes. Never enter F2 Setup and save afterwards, because Setup rewrites its own copy of the variable with zeros.
+6. **Install the card and wait.** Power off, fit the V100, power on, and leave the machine alone. It power-cycles about five times on every cold boot with the card present, then boots; Ubuntu was reachable within roughly two minutes. Never enter F2 Setup and save afterwards, because Setup rewrites its own copy of the variable with zeros.
 
 ## Safety precautions
 
