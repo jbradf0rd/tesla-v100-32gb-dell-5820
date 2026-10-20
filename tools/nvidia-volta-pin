@@ -1,0 +1,24 @@
+# Tesla V100 (Volta) is supported only up to the NVIDIA 580 driver branch,
+# and only by the proprietary kernel module (open modules are Turing+ only).
+# 590+ drivers and CUDA 13 dropped Volta. Keep every driver package on 580.x.
+# Created 2026-10-18 for the V100 install. Remove only if the V100s leave this box.
+
+# Block the open kernel module packages (no Volta support). Listed first so it wins.
+Package: nvidia-open* nvidia-driver-*-open nvidia-dkms-*-open nvidia-kernel-source-*-open nvidia-kernel-open-* nvidia-kernel-common-*-open
+Pin: version *
+Pin-Priority: -1
+
+# Prefer 580.x for all driver packages (1001 also allows downgrading 615 -> 580)
+Package: nvidia-* libnvidia-* xserver-xorg-video-nvidia-* libxnvctrl* cuda-drivers*
+Pin: version 580.*
+Pin-Priority: 1001
+
+# Never install driver branches 590 and newer
+Package: nvidia-* libnvidia-* xserver-xorg-video-nvidia-* libxnvctrl* cuda-drivers*
+Pin: version /^(59[0-9]|6[0-9][0-9]|[7-9][0-9][0-9])\./
+Pin-Priority: -1
+
+# Never pull CUDA 13 via the "latest" metapackages (no Volta support)
+Package: cuda cuda-toolkit cuda-13-* cuda-toolkit-13-*
+Pin: version *
+Pin-Priority: -1
