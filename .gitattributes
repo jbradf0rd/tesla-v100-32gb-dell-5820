@@ -1,0 +1,6 @@
+*.sh text eol=lf
+*.nsh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+tools/nvidia-volta-pin text eol=lf
+*.bin binary
