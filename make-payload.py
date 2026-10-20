@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """
+From kaykavous-ai/tesla-p40-dell-precision-5820 (MIT); two messages made machine-neutral.
+Used here as the parsing and safety-gate library for make-headless-scripts.py.
+
 Build the pass-2 `setvar` payload for SocketCommonRcConfig from THIS machine's dump.
 
 Accepts, in order of preference:
@@ -109,7 +112,7 @@ def main():
     out = pathlib.Path(sys.argv[0]).resolve().parent / "startup-pass2.nsh"
     out.write_text(
         "@echo -off\n"
-        "echo === Sultan Qaboos PASS 2: enable MMIOH window in SocketCommonRcConfig ===\n"
+        "echo === PASS 2: enable MMIOH window in SocketCommonRcConfig ===\n"
         "echo --- current value ---\n"
         f"dmpstore -guid {GUID_STR} SocketCommonRcConfig\n"
         "echo.\n"
@@ -126,7 +129,7 @@ def main():
         f"dmpstore -guid {GUID_STR} -s fs1:\\rc-after.bin SocketCommonRcConfig\n"
         "echo.\n"
         "echo If the first row above matches, type:  reset\n"
-        "echo Then let it boot STRAIGHT to Windows. Do NOT enter F2 Setup afterwards.\n"
+        "echo Then let it boot STRAIGHT to the OS. Do NOT enter F2 Setup afterwards.\n"
     )
     print(f"\nwrote {out}")
 
