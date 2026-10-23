@@ -156,7 +156,9 @@ Never copy another machine's bytes into a `setvar` command. The generated script
 
 ## Status
 
-One V100 is installed and validated in SLOT2. The second card waits for a working blower; the 256 GB window on each stack leaves room for both, and the plan is SLOT4 with its own GPU lead and adapter.
+Both V100s are installed and validated, in SLOT2 and SLOT4, each with its own GPU lead, adapter and blower. The second card needed no BIOS change: the 256 GB window on each stack holds both 32 GB BARs, and both cards report BAR1 32G, Gen3 x16 and zero ECC errors. With both cards at 250 W under `gpu-burn` for 15 minutes, neither passed 66 °C. Do not run the cards without their blowers: at idle and with no airflow, they climbed from 40 °C to 74 °C in twenty minutes.
+
+[`benchmark/`](benchmark/README.md) reports Phases 0 to 4 of an inference benchmark on the two cards. It covers a frozen harness and workload, the card tests, the Strata and NInfer engines on one and two cards, and the winner. It also documents a hardware defect on this board: direct card-to-card (P2P) copies are slow and corrupt data, even though the driver reports P2P as available.
 
 ## Credits and license
 
